@@ -197,7 +197,7 @@ const App: React.FC = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-          <button 
+          <button
             onClick={handleSignInWithGoogle}
             className="bg-slate-900 text-white px-8 py-4 rounded-xl font-semibold shadow-xl hover:bg-slate-800 transition-all flex items-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={!import.meta.env.VITE_GOOGLE_CLIENT_ID}
@@ -212,12 +212,22 @@ const App: React.FC = () => {
           >
             Upload Takeout File
           </button>
-          <button 
+          <button
             onClick={handleStartDemo}
             className="bg-white text-slate-900 px-8 py-4 rounded-xl font-semibold border border-slate-200 shadow-sm hover:border-slate-300 transition-all"
           >
             Quick Demo (Mock)
           </button>
+        </div>
+
+        <div className="flex items-center justify-center gap-6 mt-6 text-sm text-slate-500">
+          <a href="PRIVACY_POLICY.md" target="_blank" rel="noopener noreferrer" className="hover:text-slate-700 transition-colors">
+            Privacy Policy
+          </a>
+          <span className="text-slate-300">•</span>
+          <a href="TERMS_OF_SERVICE.md" target="_blank" rel="noopener noreferrer" className="hover:text-slate-700 transition-colors">
+            Terms of Service
+          </a>
         </div>
       </div>
     </div>
