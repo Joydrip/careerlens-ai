@@ -34,10 +34,14 @@ const App: React.FC = () => {
     if (error) {
       setError('OAuth authentication failed. Please try again.');
       setAppState('onboarding');
+      // Clean up URL
+      window.history.replaceState({}, document.title, window.location.pathname);
       return;
     }
 
     if (code) {
+      // Clean up URL first to prevent loops
+      window.history.replaceState({}, document.title, window.location.pathname);
       handleOAuthCallback(code);
     }
   }, []);

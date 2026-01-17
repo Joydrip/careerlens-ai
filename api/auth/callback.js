@@ -23,12 +23,13 @@ export default async function handler(req, res) {
     }
 
     // Get frontend URL from environment
-    const frontendUrl = process.env.FRONTEND_URL || process.env.VERCEL_URL
+    const frontendUrl = process.env.FRONTEND_URL || (process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}`
-      : 'http://localhost:3000';
+      : 'http://localhost:3000');
 
     // Redirect to frontend with the authorization code
-    const redirectUrl = `${frontendUrl}/auth/callback?code=${encodeURIComponent(code)}${state ? `&state=${encodeURIComponent(state)}` : ''}`;
+    // Use a different path to avoid redirect loop
+    const redirectUrl = `${frontendUrl}?code=${encodeURIComponent(code)}${state ? `&state=${encodeURIComponent(state)}` : ''}`;
 
     console.log('Redirecting to:', redirectUrl);
 
