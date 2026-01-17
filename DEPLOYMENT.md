@@ -46,7 +46,9 @@ VITE_GOOGLE_CLIENT_ID=373027122455-52tcesoful07pao0l9eot613gp39scr0.apps.googleu
 GEMINI_API_KEY=AIzaSyCVKCSGngBfiVlttplp4XSuTSEt_pg35zU
 GOOGLE_CLIENT_ID=373027122455-52tcesoful07pao0l9eot613gp39scr0.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=your_client_secret_here
-FRONTEND_URL=https://careerlens-ai.vercel.app
+FRONTEND_URL=https://[your-vercel-url]
+
+   *(Replace [your-vercel-url] with your actual Vercel domain)*
 ```
 
 ### Step 5: Update Google Cloud Console
@@ -56,7 +58,9 @@ FRONTEND_URL=https://careerlens-ai.vercel.app
 3. Click on your OAuth 2.0 Client ID
 4. Add these to **Authorized redirect URIs**:
    ```
-   https://careerlens-ai.vercel.app/auth/callback
+   https://[your-vercel-url]/auth/callback
+
+   *(Replace [your-vercel-url] with your actual Vercel domain)*
    ```
 5. Add these to **Authorized JavaScript origins**:
    ```
@@ -125,4 +129,13 @@ In Google Cloud Console → Credentials → Your OAuth Client ID:
 
 ---
 
-**Your CareerLens AI app will be live and accessible worldwide! 🎉**
+## 📝 Step-by-Step Deployment Checklist:
+
+1. ✅ **Create GitHub Repository** - Done
+2. ⏳ **Deploy to Vercel** - Follow steps above
+3. ⏳ **Get Your Vercel URL** - Vercel will give you a unique URL
+4. ⏳ **Update Google Cloud Console** - Use your actual Vercel URL
+5. ⏳ **Update Environment Variables** - Use your actual Vercel URL
+6. ⏳ **Redeploy** - Apply the environment variable changes
+
+**Your CareerLens AI app will be live and accessible worldwide once deployed! 🎉**
