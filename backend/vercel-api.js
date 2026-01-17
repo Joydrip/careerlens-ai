@@ -28,7 +28,33 @@ const oauth2Client = new google.auth.OAuth2(
 );
 
 /**
- * OAuth callback endpoint - exchanges code for tokens
+ * OAuth callback endpoint - handles OAuth redirect (GET) and token exchange (POST)
+ */
+app.get('/auth/callback', async (req, res) => {
+  try {
+    const { code, state, error: oauthError } = req.query;
+
+    if (oauthError) {
+      return res.status(400).json({ error: oauthError });
+    }
+
+    if (!code) {
+      return res.status(400).json({ error: 'Authorization code required' });
+    }
+
+    // Redirect to frontend with the code as a query parameter
+    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+    const redirectUrl = `${frontendUrl}/auth/callback?code=${code}&state=${state || ''}`;
+
+    res.redirect(redirectUrl);
+  } catch (error) {
+    console.error('OAuth callback error:', error);
+    res.status(500).json({ error: 'OAuth callback failed' });
+  }
+});
+
+/**
+ * Token exchange endpoint - exchanges code for tokens
  */
 app.post('/api/auth/oauth/callback', async (req, res) => {
   try {

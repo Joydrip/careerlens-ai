@@ -37,10 +37,10 @@ const App: React.FC = () => {
       return;
     }
 
-    if (code && state && oauthService.verifyState(state)) {
+    if (code) {
       handleOAuthCallback(code);
     }
-  }, [oauthService]);
+  }, []);
 
   const handleOAuthCallback = async (code: string) => {
     try {
