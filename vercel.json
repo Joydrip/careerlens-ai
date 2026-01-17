@@ -19,6 +19,10 @@
       "dest": "/backend/vercel-api.js"
     },
     {
+      "src": "/auth/callback",
+      "dest": "/backend/vercel-api.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
