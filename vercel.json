@@ -10,10 +10,16 @@
     }
   ],
   "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs18.x"
+    "api/*.js": {
+      "runtime": "@vercel/node"
     }
   },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
+  ],
   "env": {
     "VITE_API_URL": "https://careerlens-ai.vercel.app"
   }

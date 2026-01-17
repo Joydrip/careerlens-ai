@@ -20,7 +20,7 @@ const App: React.FC = () => {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [oauthService] = useState(() => {
     const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
-    const redirectUri = `${window.location.origin}/api/auth/callback`;
+    const redirectUri = `${window.location.origin}/api/callback`;
     return new OAuthService(clientId, redirectUri);
   });
 
