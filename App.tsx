@@ -27,8 +27,8 @@ const App: React.FC = () => {
   // Handle OAuth callback
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-    const state = urlParams.get('state');
+    const code = urlParams.get('oauth_code'); // Changed from 'code' to 'oauth_code'
+    const state = urlParams.get('oauth_state'); // Changed from 'state' to 'oauth_state'
     const error = urlParams.get('error');
 
     if (error) {

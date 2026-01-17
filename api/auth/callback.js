@@ -27,9 +27,8 @@ export default async function handler(req, res) {
       ? `https://${process.env.VERCEL_URL}`
       : 'http://localhost:3000');
 
-    // Redirect to frontend with the authorization code
-    // Use a different path to avoid redirect loop
-    const redirectUrl = `${frontendUrl}?code=${encodeURIComponent(code)}${state ? `&state=${encodeURIComponent(state)}` : ''}`;
+    // Redirect to home page with code (avoiding /auth/callback to prevent loops)
+    const redirectUrl = `${frontendUrl}/?oauth_code=${encodeURIComponent(code)}${state ? `&oauth_state=${encodeURIComponent(state)}` : ''}`;
 
     console.log('Redirecting to:', redirectUrl);
 
