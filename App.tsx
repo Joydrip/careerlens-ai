@@ -221,11 +221,11 @@ const App: React.FC = () => {
         </div>
 
         <div className="flex items-center justify-center gap-6 mt-6 text-sm text-slate-500">
-          <a href="https://github.com/Joydrip/careerlens-ai/blob/main/PRIVACY_POLICY.md" target="_blank" rel="noopener noreferrer" className="hover:text-slate-700 transition-colors">
+          <a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer" className="hover:text-slate-700 transition-colors">
             Privacy Policy
           </a>
           <span className="text-slate-300">•</span>
-          <a href="https://github.com/Joydrip/careerlens-ai/blob/main/TERMS_OF_SERVICE.md" target="_blank" rel="noopener noreferrer" className="hover:text-slate-700 transition-colors">
+          <a href="/terms-of-service.html" target="_blank" rel="noopener noreferrer" className="hover:text-slate-700 transition-colors">
             Terms of Service
           </a>
         </div>
@@ -323,10 +323,10 @@ const App: React.FC = () => {
                 You can delete your data at any time from Settings.
               </p>
               <div className="flex gap-3">
-                <a href="https://github.com/Joydrip/careerlens-ai/blob/main/PRIVACY_POLICY.md" target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline hover:text-blue-800">
+                <a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline hover:text-blue-800">
                   Privacy Policy
                 </a>
-                <a href="https://github.com/Joydrip/careerlens-ai/blob/main/TERMS_OF_SERVICE.md" target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline hover:text-blue-800">
+                <a href="/terms-of-service.html" target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline hover:text-blue-800">
                   Terms of Service
                 </a>
               </div>
@@ -375,7 +375,7 @@ const App: React.FC = () => {
 
         <div className="px-4 py-2 border-b border-slate-100 space-y-1">
           <a
-            href="https://github.com/Joydrip/careerlens-ai/blob/main/PRIVACY_POLICY.md"
+            href="/privacy-policy.html"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-700 transition-colors"
@@ -384,7 +384,7 @@ const App: React.FC = () => {
             Privacy Policy
           </a>
           <a
-            href="https://github.com/Joydrip/careerlens-ai/blob/main/TERMS_OF_SERVICE.md"
+            href="/terms-of-service.html"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-700 transition-colors"
@@ -413,7 +413,7 @@ const App: React.FC = () => {
 
         <div className="p-4 border-t border-slate-100 space-y-2">
           <a
-            href="https://github.com/Joydrip/careerlens-ai/blob/main/PRIVACY_POLICY.md"
+            href="/privacy-policy.html"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex items-center gap-3 px-4 py-2 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-700 transition-all text-sm"
@@ -422,7 +422,7 @@ const App: React.FC = () => {
             Privacy Policy
           </a>
           <a
-            href="https://github.com/Joydrip/careerlens-ai/blob/main/TERMS_OF_SERVICE.md"
+            href="/terms-of-service.html"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex items-center gap-3 px-4 py-2 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-700 transition-all text-sm"
