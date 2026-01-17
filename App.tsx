@@ -20,31 +20,12 @@ const App: React.FC = () => {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [oauthService] = useState(() => {
     const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
-    const redirectUri = `${window.location.origin}/auth/callback`;
+    const redirectUri = `${window.location.origin}/api/auth/callback`;
     return new OAuthService(clientId, redirectUri);
   });
 
-  // Handle OAuth callback
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('oauth_code'); // Changed from 'code' to 'oauth_code'
-    const state = urlParams.get('oauth_state'); // Changed from 'state' to 'oauth_state'
-    const error = urlParams.get('error');
-
-    if (error) {
-      setError('OAuth authentication failed. Please try again.');
-      setAppState('onboarding');
-      // Clean up URL
-      window.history.replaceState({}, document.title, window.location.pathname);
-      return;
-    }
-
-    if (code) {
-      // Clean up URL first to prevent loops
-      window.history.replaceState({}, document.title, window.location.pathname);
-      handleOAuthCallback(code);
-    }
-  }, []);
+  // Handle OAuth callback - removed automatic handling to prevent loops
+  // OAuth flow is now handled entirely through the OAuth service
 
   const handleOAuthCallback = async (code: string) => {
     try {

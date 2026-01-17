@@ -4,6 +4,17 @@
  */
 
 export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
   // Only allow GET requests
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -22,17 +33,14 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Authorization code required' });
     }
 
-    // Get frontend URL from environment
-    const frontendUrl = process.env.FRONTEND_URL || (process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : 'http://localhost:3000');
+    // Return JSON response instead of redirecting
+    res.json({
+      success: true,
+      code: code,
+      state: state,
+      message: 'OAuth authorization code received'
+    });
 
-    // Redirect to home page with code (avoiding /auth/callback to prevent loops)
-    const redirectUrl = `${frontendUrl}/?oauth_code=${encodeURIComponent(code)}${state ? `&oauth_state=${encodeURIComponent(state)}` : ''}`;
-
-    console.log('Redirecting to:', redirectUrl);
-
-    res.redirect(302, redirectUrl);
   } catch (error) {
     console.error('OAuth callback error:', error);
     res.status(500).json({ error: 'OAuth callback failed', details: error.message });
