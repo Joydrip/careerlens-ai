@@ -45,15 +45,35 @@ const App: React.FC = () => {
   const handleOAuthCallback = async (code: string) => {
     try {
       setAppState('processing');
-      const { accessToken } = await oauthService.exchangeCodeForTokens(code);
+
+      // Exchange code for tokens via API
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://careerlens-ai.vercel.app';
+      const response = await fetch(`${apiUrl}/api/auth/oauth-callback`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          code,
+          redirectUri: `${window.location.origin}/auth/callback`
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Token exchange failed');
+      }
+
+      const { accessToken } = await response.json();
       localStorage.setItem('access_token', accessToken);
-      
+
       const profile = await oauthService.getUserProfile(accessToken);
       setUserProfile(profile);
 
       // Fetch YouTube watch history
       await fetchYouTubeHistory(accessToken);
     } catch (err: any) {
+      console.error('OAuth callback error:', err);
       setError(err.message || 'Authentication failed');
       setAppState('onboarding');
     }
